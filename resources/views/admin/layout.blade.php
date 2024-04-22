@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="ltr">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -28,36 +28,38 @@
 
 </head>
 <body data-background-color="dark">
-	<div class="wrapper @yield('sidebar')">
+	<div dir="rtl">
+        <div class="wrapper @yield('sidebar')">
 
-    {{-- top navbar area start --}}
-    @includeif('admin.partials.top-navbar')
-    {{-- top navbar area end --}}
-
-
-    {{-- side navbar area start --}}
-    @includeif('admin.partials.side-navbar')
-    {{-- side navbar area end --}}
-
-
-		<div class="main-panel">
-        <div class="content">
-            <div class="page-inner">
-            @yield('content')
+            {{-- top navbar area start --}}
+            @includeif('admin.partials.top-navbar')
+            {{-- top navbar area end --}}
+        
+        
+            {{-- side navbar area start --}}
+            @includeif('admin.partials.side-navbar')
+            {{-- side navbar area end --}}
+        
+        
+                <div class="main-panel">
+                <div class="content">
+                    <div class="page-inner">
+                    @yield('content')
+                    </div>
+                </div>
+                    @includeif('admin.partials.footer')
+                </div>
+        
             </div>
-        </div>
-            @includeif('admin.partials.footer')
-		</div>
-
-	</div>
-
-	@includeif('admin.partials.scripts')
-
-    {{-- Loader --}}
-    <div class="request-loader">
-        <img src="{{asset('assets/admin/img/loader.gif')}}" alt="">
+        
+            @includeif('admin.partials.scripts')
+        
+            {{-- Loader --}}
+            <div class="request-loader">
+                <img src="{{asset('assets/admin/img/loader.gif')}}" alt="">
+            </div>
+            {{-- Loader --}}
     </div>
-    {{-- Loader --}}
  
 </body>
 </html>

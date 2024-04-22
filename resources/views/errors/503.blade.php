@@ -1,4 +1,4 @@
-<html>
+<html lang="ar" dir="ltr">
 	<head>
         <title>{{$bs->website_title}} - maintenance Mode</title>
 		<!-- favicon -->
@@ -8,7 +8,7 @@
 		<link rel="stylesheet" href="{{asset('assets/front/css/503.css')}}">
 	</head>
 	<body>
-		<div class="container">
+		<div class="container" dir="rtl">
 			<div class="content">
 				<div class="row">
 					<div class="col-lg-4 offset-lg-4">

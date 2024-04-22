@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,7 +38,7 @@
 </head>
 <body>
 
-    <div>
+    <div dir="rtl">
         <div class="receipt-title">
             <h2 class="my-0">{{$bs->website_title}}</h2>
             <p class="my-0">{{\Carbon\Carbon::now()}}</p>

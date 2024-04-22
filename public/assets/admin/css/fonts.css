@@ -924,15 +924,15 @@ Creation date: 13/03/2018 03:24
 
 .fa-ul {
   list-style-type: none;
-  margin-left: 2.5em;
-  padding-left: 0;
+  margin-right: 2.5em;
+  padding-right: 0;
 }
 .fa-ul > li {
   position: relative;
 }
 
 .fa-li {
-  left: -2em;
+  right: -2em;
   position: absolute;
   text-align: center;
   width: 2em;
@@ -946,19 +946,19 @@ Creation date: 13/03/2018 03:24
 }
 
 .fa-pull-left {
-  float: left;
-}
-
-.fa-pull-right {
   float: right;
 }
 
+.fa-pull-right {
+  float: left;
+}
+
 .fa.fa-pull-left, .fas.fa-pull-left, .far.fa-pull-left, .fal.fa-pull-left, .fab.fa-pull-left {
-  margin-right: .3em;
+  margin-left: .3em;
 }
 
 .fa.fa-pull-right, .fas.fa-pull-right, .far.fa-pull-right, .fal.fa-pull-right, .fab.fa-pull-right {
-  margin-left: .3em;
+  margin-right: .3em;
 }
 
 .fa-spin {
@@ -977,8 +977,8 @@ Creation date: 13/03/2018 03:24
     transform: rotate(0deg);
   }
   100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
+    -webkit-transform: rotate(-360deg);
+    transform: rotate(-360deg);
   }
 }
 @keyframes fa-spin {
@@ -987,26 +987,26 @@ Creation date: 13/03/2018 03:24
     transform: rotate(0deg);
   }
   100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
+    -webkit-transform: rotate(-360deg);
+    transform: rotate(-360deg);
   }
 }
 .fa-rotate-90 {
   -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1)";
-  -webkit-transform: rotate(90deg);
-  transform: rotate(90deg);
+  -webkit-transform: rotate(-90deg);
+  transform: rotate(-90deg);
 }
 
 .fa-rotate-180 {
   -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)";
-  -webkit-transform: rotate(180deg);
-  transform: rotate(180deg);
+  -webkit-transform: rotate(-180deg);
+  transform: rotate(-180deg);
 }
 
 .fa-rotate-270 {
   -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=3)";
-  -webkit-transform: rotate(270deg);
-  transform: rotate(270deg);
+  -webkit-transform: rotate(-270deg);
+  transform: rotate(-270deg);
 }
 
 .fa-flip-horizontal {
@@ -1042,7 +1042,7 @@ Creation date: 13/03/2018 03:24
 }
 
 .fa-stack-1x, .fa-stack-2x {
-  left: 0;
+  right: 0;
   position: absolute;
   text-align: center;
   width: 100%;

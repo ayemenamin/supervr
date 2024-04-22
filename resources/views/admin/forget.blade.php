@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="ltr">
   <head>
     <meta charset="utf-8">
   	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{asset('assets/admin/css/forget.css')}}">
   </head>
   <body>
-    <div class="login-page">
+    <div class="login-page" dir="rtl">
       <div class="text-center mb-4">
         <img class="login-logo" src="{{asset('assets/front/img/'.$bs->logo)}}" alt="">
       </div>

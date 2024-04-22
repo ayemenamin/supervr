@@ -311,8 +311,8 @@ body {
 #calcModal .slider {
     position: absolute;
     top: 0;
-    left: 0;
     right: 0;
+    left: 0;
     bottom: 0;
     cursor: pointer;
     transition: .4s;
@@ -325,7 +325,7 @@ body {
     content: "";
     height: 13px;
     width: 13px;
-    left: 2px;
+    right: 2px;
     bottom: 2px;
     transition: .4s;
     border-radius: 50%;
@@ -348,5 +348,5 @@ body {
 }
 
 #calcModal input:checked + .slider:before {
-  transform: translateX(13px);
+  transform: translateX(-13px);
 }

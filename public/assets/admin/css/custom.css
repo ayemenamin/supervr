@@ -1,11 +1,11 @@
 /* Helper class starts */
 
 .rtl {
-    direction: rtl !important;
+    direction: ltr !important;
 }
 
 .ltr {
-    direction: ltr !important;
+    direction: rtl !important;
 }
 
 
@@ -89,13 +89,13 @@
 #imgtable .trdb {
     display: inline-block;
     position: relative;
-    margin-right: 15px;
+    margin-left: 15px;
 }
 
 #imgtable .trdb button {
     position: absolute;
     top: 0;
-    right: 0;
+    left: 0;
     padding: 0px 5px;
 }
 
@@ -110,7 +110,7 @@
 /* iconpicker input field start */
 
 .iconpicker-popover.popover .popover-title input[type=search].iconpicker-search {
-    direction: ltr !important;
+    direction: rtl !important;
 }
 
 
@@ -122,7 +122,7 @@
 .request-loader {
     position: fixed;
     top: 0;
-    left: 0;
+    right: 0;
     height: 100%;
     width: 100%;
     background-color: #0000007a;
@@ -135,8 +135,8 @@
     display: none;
     width: 80px;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    right: 50%;
+    transform: translate(50%, -50%);
 }
 
 .request-loader.show {
@@ -174,20 +174,20 @@ label.note-form-label {
 
 .sn-checkbox-open-in-new-window.form-check [type=checkbox]:checked,
 .sn-checkbox-open-in-new-window.form-check [type=checkbox]:not(:checked) {
-    left: 30px;
+    right: 30px;
 }
 
 .form-check.sn-checkbox-open-in-new-window {
-    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .sn-checkbox-use-protocol.form-check [type=checkbox]:checked,
 .sn-checkbox-use-protocol.form-check [type=checkbox]:not(:checked) {
-    left: 30px;
+    right: 30px;
 }
 
 .form-check.sn-checkbox-use-protocol {
-    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .form-check.sn-checkbox-use-protocol {
@@ -205,7 +205,7 @@ label.note-form-label {
 /* summernote rtl css starts */
 
 .note-editor.note-frame .note-editing-area .note-editable.rtl {
-    text-align: right !important;
+    text-align: left !important;
 }
 
 
@@ -217,14 +217,14 @@ label.note-form-label {
 
 #myEditor li.list-group-item {
     cursor: move;
-    border-left-width: 1px;
     border-right-width: 1px;
+    border-left-width: 1px;
 }
 
 .custom-file-label::after {
     color: #fff;
     background-color: #1a2035;
-    border-left: 1px solid #2f374b;
+    border-right: 1px solid #2f374b;
 }
 
 label.custom-file-label {
@@ -253,8 +253,8 @@ label.custom-file-label {
     cursor: pointer;
     display: block;
     width: 100%;
-    text-align: left;
-    padding-left: 0;
+    text-align: right;
+    padding-right: 0;
 }
 
 .note-editor.note-frame .note-editing-area .note-editable p,
@@ -289,7 +289,7 @@ label.custom-file-label {
     position: absolute;
     font-weight: 700;
     top: -23px;
-    right: -17px;
+    left: -17px;
     font-size: 20px;
     cursor: pointer;
     transition: .3s;
@@ -347,7 +347,7 @@ li.ui-menu-item {
 .select2-container--default .select2-selection--single .select2-selection__rendered {
     color: #fff;
     line-height: 42px;
-    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .select2-container--default .select2-selection--single .select2-selection__arrow b {
@@ -375,7 +375,7 @@ li.ui-menu-item {
 }
 
 #variationModal .form-check-input {
-    margin-left: 0px !important; 
+    margin-right: 0px !important; 
 }
 
 #variationModal .form-check {
@@ -402,7 +402,7 @@ li.ui-menu-item {
 }
 
 #variationModal div#addons .form-check label {
-    padding-left: 20px;
+    padding-right: 20px;
 }
 
 #variationModal .modal-title small {
@@ -457,11 +457,11 @@ li.ui-menu-item {
         -o-transform: rotate(0deg);
     }
     to {
-        transform: rotate(360deg);
-        -webkit-transform: rotate(360deg);
-        -moz-transform: rotate(360deg);
-        -ms-transform: rotate(360deg);
-        -o-transform: rotate(360deg);
+        transform: rotate(-360deg);
+        -webkit-transform: rotate(-360deg);
+        -moz-transform: rotate(-360deg);
+        -ms-transform: rotate(-360deg);
+        -o-transform: rotate(-360deg);
     }
 }
 
@@ -477,7 +477,7 @@ button.modal-cart-link i.fa-spinner,
 }
 
 #variationModal .form-check [type=checkbox]:checked, #variationModal .form-check [type=checkbox]:not(:checked) {
-    left: 0;
+    right: 0;
 }
 
 
@@ -510,7 +510,7 @@ a.single-pos-item {
 #cartTable tr.cart-item td.item i.fa-times {
     position: absolute;
     top: -6px;
-    right: 20px;
+    left: 20px;
     font-size: 14px;
     cursor: pointer;
     display: inline-block;
@@ -530,7 +530,7 @@ a.single-pos-item {
 .field-input.cross i.fa-times-circle {
     position: absolute;
     color: #fff;
-    right: 8px;
+    left: 8px;
     top: 16px;
     cursor: pointer;
     display: none;

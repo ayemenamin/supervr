@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -76,7 +76,7 @@
 </head>
 <body>
 
-    <div>
+    <div dir="rtl">
         <div class="receipt-title">
             @if (Session::has('pos_serving_method') && !empty(Session::get('pos_serving_method')))
             <div class="serving-method">{{Session::get('pos_serving_method')}}</div>

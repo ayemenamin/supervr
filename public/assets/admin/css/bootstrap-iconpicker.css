@@ -9,7 +9,7 @@
 */
 
 .iconpicker .caret {
-    margin-left: 10px !important;
+    margin-right: 10px !important;
 }
 
 .iconpicker {
@@ -22,16 +22,16 @@
 }
 
 div.iconpicker.left .table-icons {
-    margin-right: auto;
+    margin-left: auto;
 }
 
 div.iconpicker.center .table-icons {
-    margin-left: auto;
     margin-right: auto;
+    margin-left: auto;
 }
 
 div.iconpicker.right .table-icons {
-    margin-left: auto;
+    margin-right: auto;
 }
 
 .table-icons .btn {

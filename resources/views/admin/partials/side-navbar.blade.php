@@ -25,7 +25,7 @@
                         <span>
                             {{ Auth::guard('admin')->user()->first_name }}
                             @if (empty(Auth::guard('admin')->user()->role))
-                                <span class="user-level">Owner</span>
+                                <span class="user-level">مدير النظام</span>
                             @else
                                 <span class="user-level">{{ Auth::guard('admin')->user()->role->name }}</span>
                             @endif
@@ -38,17 +38,17 @@
                         <ul class="nav">
                             <li>
                                 <a href="{{ route('admin.editProfile') }}">
-                                    <span class="link-collapse">Edit Profile</span>
+                                    <span class="link-collapse">تعديل الملف الشخصي</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ route('admin.changePass') }}">
-                                    <span class="link-collapse">Change Password</span>
+                                    <span class="link-collapse">تغيير كلمة السر</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ route('admin.logout') }}">
-                                    <span class="link-collapse">Logout</span>
+                                    <span class="link-collapse">تسجيل الخروج</span>
                                 </a>
                             </li>
                         </ul>
@@ -61,7 +61,7 @@
                         <form action="">
                             <div class="form-group py-0">
                                 <input name="term" type="text" class="form-control sidebar-search" value=""
-                                    placeholder="Search Menu Here...">
+                                    placeholder="البحث في النظام">
                             </div>
                         </form>
                     </div>
@@ -72,7 +72,7 @@
                     <li class="nav-item @if (request()->path() == 'admin/dashboard') active @endif">
                         <a href="{{ route('admin.dashboard') }}">
                             <i class="la flaticon-paint-palette"></i>
-                            <p>Dashboard</p>
+                            <p>لوحة التحكم</p>
                         </a>
                     </li>
                 @endif
@@ -87,7 +87,7 @@
           @elseif(request()->path() == 'admin/pos/payment-methods') active @endif">
                         <a data-toggle="collapse" href="#pos">
                             <i class="fas fa-cart-plus"></i>
-                            <p>POS</p>
+                            <p>المبيعات</p>
                             <span class="caret"></span>
                         </a>
                         <div class="collapse
@@ -135,7 +135,7 @@
           @elseif(request()->path() == 'admin/timeframes') active @endif">
                         <a data-toggle="collapse" href="#orderManagement">
                             <i class="fas fa-box"></i>
-                            <p>Order Management</p>
+                            <p>ادارة الطلبات</p>
                             <span class="caret"></span>
                         </a>
                         <div class="collapse
@@ -254,7 +254,7 @@
         @elseif(request()->routeIs('register.user.changePass')) active @endif">
                         <a data-toggle="collapse" href="#customers">
                             <i class="la flaticon-users"></i>
-                            <p>Customers</p>
+                            <p>الزبائن</p>
                             <span class="caret"></span>
                         </a>
                         <div class="collapse
@@ -296,7 +296,7 @@
                         @elseif(request()->is('admin/subcategory/*/edit')) active @endif">
                         <a data-toggle="collapse" href="#category">
                             <i class="fas fa-hamburger"></i>
-                            <p>Items Management</p>
+                            <p>ادارة المخزون</p>
                             <span class="caret"></span>
                         </a>
                         <div class="collapse
@@ -345,7 +345,7 @@
          @if (request()->path() == 'admin/qr-code') active @endif">
                         <a href="{{ route('admin.qrcode') }}">
                             <i class="fas fa-qrcode"></i>
-                            <p>QR Code Builder</p>
+                            <p>قائمة الطعام &nbsp; QR</p>
                         </a>
                     </li>
                 @endif
@@ -359,7 +359,7 @@
         @elseif(request()->path() == 'admin/offline/gateways') active @endif">
                         <a data-toggle="collapse" href="#gateways">
                             <i class="la flaticon-paypal"></i>
-                            <p>Payment Gateways</p>
+                            <p>طرق الدفع</p>
                             <span class="caret"></span>
                         </a>
                         <div class="collapse
@@ -393,7 +393,7 @@
           @elseif(request()->path() == 'admin/table/section') active @endif">
                         <a data-toggle="collapse" href="#reservSet">
                             <i class="fas fa-utensils"></i>
-                            <p>Reservation Settings</p>
+                            <p>اعدادات الحجز</p>
                             <span class="caret"></span>
                         </a>
                         <div class="collapse
@@ -434,7 +434,7 @@
                     <li class="nav-item  @if (request()->is('admin/table/resevations/*')) active @endif">
                         <a data-toggle="collapse" href="#table">
                             <i class="fas fa-utensils"></i>
-                            <p>Table Reservations</p>
+                            <p>حجز الطاولات</p>
                             <span class="caret"></span>
                         </a>
                         <div class="collapse  @if (request()->is('admin/table/resevations/*')) show @endif" id="table">
@@ -634,7 +634,7 @@
           @elseif(request()->routeIs('admin.email.editTemplate')) active @endif">
                         <a data-toggle="collapse" href="#basic">
                             <i class="la flaticon-settings"></i>
-                            <p>Settings</p>
+                            <p>اعدادات النظام</p>
                             <span class="caret"></span>
                         </a>
                         <div class="collapse
@@ -802,7 +802,7 @@
           @elseif(request()->is('admin/user/*/edit')) active @endif">
                         <a data-toggle="collapse" href="#adminsManagement">
                             <i class="fas fa-users-cog"></i>
-                            <p>Admins Management</p>
+                            <p>المسؤولين</p>
                             <span class="caret"></span>
                         </a>
                         <div class="collapse
@@ -854,7 +854,7 @@
          @if (request()->path() == 'admin/backup') active @endif">
                         <a href="{{ route('admin.backup.index') }}">
                             <i class="la flaticon-down-arrow-3"></i>
-                            <p>Database Backup</p>
+                            <p>النسخ الاحتياطي</p>
                         </a>
                     </li>
                 @endif
