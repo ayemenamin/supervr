@@ -24,14 +24,18 @@ class BackupController extends Controller
         $username = env('DB_USERNAME');
         $password = env('DB_PASSWORD');
         $database = env('DB_DATABASE');
+        $port = env('DB_PORT');
         
         $ts = time();
   
         $path = 'storage/app/public/';
         $file = date('Y-m-d-His', $ts) . '-dump-' . $database . '.sql';
         
-        $command = sprintf('C:\wamp64\bin\mysql\mysql5.7.36\bin\mysqldump.exe -h %s -u %s -p %s > %s', $host, $username, $database, $path . $file);
+        //$command = sprintf('C:\wamp64\bin\mysql\mysql5.7.36\bin\mysqldump.exe -h %s -u %s -p %s > %s', $host, $username, $database, $path . $file);
+       // $command = sprintf('C:\wamp64\bin\mysql\mysql5.7.36\bin\mysqldump.exe --host=$s --user=%s --password=$s --port=$s  $s --result-file= > %s', $host, $username, $password,$port,$database, $path . $file);
+        $command = sprintf('C:\wamp64\bin\mysql\mysql5.7.36\bin\mysqldump.exe --host=%s --user=%s --password=%s --port=%s  %s --result-file=%s', $host, $username, $password, $port, $database, $path . $file);
 
+        //dd($command);
 
   
         @mkdir($path, 0755, true);
@@ -48,13 +52,13 @@ class BackupController extends Controller
 
     public function download(Request $request)
     {
-        return response()->download('core/storage/app/public/' . $request->filename, 'backup.sql');
+        return response()->download('storage/app/public/' . $request->filename, 'backup.sql');
     }
 
     public function delete($id)
     {
         $backup = Backup::find($id);
-        @unlink('core/storage/app/public/' . $backup->filename);
+        @unlink('storage/app/public/' . $backup->filename);
         $backup->delete();
 
         Session::flash('success', 'Database sql file deleted successfully!');
