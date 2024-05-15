@@ -686,7 +686,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus']
         Route::post('/product/feature', 'Admin\ProductController@FeatureCheck')->name('admin.product.feature');
         // Special Check Routes
         Route::post('/product/special', 'Admin\ProductController@SpecialCheck')->name('admin.product.special');
-
+        Route::post('/product/valible', 'Admin\ProductController@ValibleCheck')->name('admin.product.valible');
 
         Route::post('/product/sliderstore', 'Admin\ProductController@sliderstore')->name('admin.product.sliderstore');
         Route::post('/product/sliderrmv', 'Admin\ProductController@sliderrmv')->name('admin.product.sliderrmv');

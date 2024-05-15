@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="mt-2 mb-4">
-        <h2 class="text-white pb-2">Welcome back, {{ Auth::guard('admin')->user()->first_name }}
+        <h2 class="text-white pb-2">أهلًا، {{ Auth::guard('admin')->user()->first_name }}
             {{ Auth::guard('admin')->user()->last_name }}!</h2>
     </div>
     <div class="row">
@@ -283,7 +283,7 @@
                                                     <tr>
                                                         <th scope="col">Name</th>
                                                         <th scope="col">Email</th>
-                                                        <th scope="col">Details</th>
+                                                        <th scope="col">التفاصيل</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -295,7 +295,7 @@
                                                                 <button class="btn btn-secondary btn-sm"
                                                                     data-toggle="modal"
                                                                     data-target="#detailsModal{{ $reservation->id }}"><i
-                                                                        class="fas fa-eye"></i> View</button>
+                                                                        class="fas fa-eye"></i> عرض</button>
                                                             </td>
                                                         </tr>
 

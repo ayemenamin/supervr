@@ -87,6 +87,7 @@ $selLang = App\Models\Language::where('code', request()->input('language'))->fir
                         <th scope="col">Category</th>
                         <th scope="col">Featured</th>
                         <th scope="col">Special</th>
+                        <th scope="col">valible</th>
                         <th scope="col" width="15%">Actions</th>
                       </tr>
                     </thead>
@@ -136,6 +137,25 @@ $selLang = App\Models\Language::where('code', request()->input('language'))->fir
                                 </select>
                             </form>
                           </td>
+
+                          <td>
+                            <form id="valibleForm{{$product->id}}" action="{{route('admin.product.valible')}}" method="POST">
+                                @csrf
+                                <input type="hidden" name="product_id" value="{{$product->id}}">
+                                <select name="valible" id="" class="form-control-sm text-white
+                                  @if($product->is_valible == 1)
+                                  bg-success
+                                  @elseif ($product->is_valible == 0)
+                                  bg-danger
+                                  @endif
+                                " onchange="document.getElementById('valibleForm{{$product->id}}').submit();">
+                                    <option value="1" {{$product->is_valible == 1 ? 'selected' : ''}}>Yes</option>
+                                    <option value="0" {{$product->is_valible == 0 ? 'selected' : ''}}>No</option>
+                                </select>
+                            </form>
+                          </td>
+
+
                           <td width="15%">
                             <a class="btn btn-secondary btn-sm p-2" href="{{route('admin.product.edit', $product->id) . '?language=' . request()->input('language')}}">
                               <i class="fas fa-edit"></i>

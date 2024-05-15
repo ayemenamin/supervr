@@ -407,4 +407,18 @@ class ProductController extends Controller
         Session::flash('success', 'Product updated successfully!');
         return back();
     }
+    public function ValibleCheck(Request $request)
+    {
+    
+        $id = $request->product_id;
+        $value = $request->valible;
+
+        $product = Product::findOrFail($id);
+       
+        $product->is_valible = $value;
+        $product->save();
+
+        Session::flash('success', 'Product updated successfully!');
+        return back();
+    }
 }

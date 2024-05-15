@@ -27,9 +27,12 @@ class BackupController extends Controller
         
         $ts = time();
   
-        $path = 'core/storage/app/public/';
+        $path = 'storage/app/public/';
         $file = date('Y-m-d-His', $ts) . '-dump-' . $database . '.sql';
-        $command = sprintf('mysqldump -h %s -u %s -p\'%s\' %s > %s', $host, $username, $password, $database, $path . $file);
+        
+        $command = sprintf('C:\wamp64\bin\mysql\mysql5.7.36\bin\mysqldump.exe -h %s -u %s -p %s > %s', $host, $username, $database, $path . $file);
+
+
   
         @mkdir($path, 0755, true);
   

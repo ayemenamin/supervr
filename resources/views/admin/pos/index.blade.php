@@ -23,7 +23,7 @@
                     </div>
                 </div>
                 <div id="posCatItems" style="display: block;">
-                    
+                    @includeIf('admin.pos.partials.cats-items')
                 </div>
                 <div id="posItems" style="display: none;">
                     @includeIf('admin.pos.partials.items')
@@ -78,16 +78,7 @@
                                     <select class="form-control select2" name="table_no">
                                         <option value="" selected disabled>Select Table No</option>
                                         @foreach ($tables as $table)
-                                        @php
-                                            if($table->is_busy == 1){
-                                                $table_no = '';
-                                                $avalied = 'Busy';
-                                            }else{
-                                                $table_no = $table->table_no;
-                                                $avalied = 'Available';
-                                            }
-                                        @endphp
-                                            <option value="{{$table_no}}" {{$table->table_no == old('table_no') ? 'selected' : ''}}>Table - {{$table->table_no}} Is {{$avalied}}</option>
+                                            <option value="{{$table->table_no}}" {{$table->table_no == old('table_no') ? 'selected' : ''}}>Table - {{$table->table_no}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -328,189 +319,7 @@
                 </div>
             </div>
         </div>
-        <div class="card-body">
-            <div class="row">
-              <div class="col-lg-12">
-                @if (count($orders) == 0)
-                  <h3 class="text-center">NO ORDER FOUND</h3>
-                @else
-                  <div id="refreshOrder">
-                      <div class="table-responsive">
-                        <div id="orders-table">
-                        <table class="table table-striped mt-3">
-                          <thead>
-                            <tr>
-                              <th scope="col">
-                                  <input type="checkbox" class="bulk-check" data-val="all">
-                              </th>
-  
-                              <th scope="col">Order Number</th>
-                              <th scope="col">Serving Method</th>
-                              <th scope="col">Payment</th>
-                              <th scope="col">Status</th>
-                              <th scope="col">Completed</th>
-                              <th scope="col">Gateway</th>
-                              <th scope="col">Time</th>
-                              <th scope="col">Actions</th>
-                            </tr>
-                          </thead>
-  
-                          <tbody>
-                            @foreach ($orders as $key => $order)
-                              <tr>
-                                <td>
-                                  <input type="checkbox" class="bulk-check" data-val="{{$order->id}}">
-                                </td>
-                                <td>{{$order->order_number}}</td>
-                                <td class="text-capitalize">
-                                    @if ($order->serving_method == 'on_table')
-                                        On Table
-                                    @elseif ($order->serving_method == 'home_delivery')
-                                        Home Delivery
-                                    @elseif ($order->serving_method == 'pick_up')
-                                        Pick up
-                                    @endif
-                                </td>
-                                <td>
-                                  @if ($order->type == 'pos' || $order->gateway_type == 'offline')
-                                      <form id="paymentForm{{$order->id}}" class="d-inline-block" action="{{route('admin.product.order.payment')}}" method="post">
-                                          @csrf
-                                          <input type="hidden" name="order_id" value="{{$order->id}}">
-                                          <select class="form-control form-control-sm
-                                              @if ($order->payment_status == 'Pending')
-                                                  bg-warning
-                                              @elseif ($order->payment_status == 'Completed')
-                                                  bg-success
-                                              @endif
-                                          " name="payment_status" onchange="document.getElementById('paymentForm{{$order->id}}').submit();">
-                                                  <option value="Pending" {{$order->payment_status == 'Pending' ? 'selected' : ''}}>Pending</option>
-                                                  <option value="Completed" {{$order->payment_status == 'Completed' ? 'selected' : ''}}>Completed</option>
-                                          </select>
-                                      </form>
-                                  @else
-                                      @if ($order->payment_status == 'Pending' || $order->payment_status == 'pending')
-                                          <p class="badge badge-danger">Pending</p>
-                                      @else
-                                          <p class="badge badge-success">Completed</p>
-                                      @endif
-                                  @endif
-                                </td>
-                                <td>
-                                  <form id="statusForm{{$order->id}}" class="d-inline-block" action="{{route('admin.product.orders.status')}}" method="post">
-                                    @csrf
-                                    <input type="hidden" name="order_id" value="{{$order->id}}">
-                                    <select class="form-control
-                                    @if ($order->order_status == 'pending')
-  
-                                    @elseif ($order->order_status == 'received')
-                                      bg-secondary
-                                    @elseif ($order->order_status == 'preparing')
-                                      bg-warning
-                                    @elseif ($order->order_status == 'ready_to_pick_up')
-                                      bg-primary
-                                    @elseif ($order->order_status == 'picked_up')
-                                      bg-info
-                                    @elseif ($order->order_status == 'delivered')
-                                      bg-success
-                                    @elseif ($order->order_status == 'cancelled')
-                                      bg-danger
-                                    @elseif ($order->order_status == 'ready_to_serve')
-                                      bg-white text-dark
-                                    @elseif ($order->order_status == 'served')
-                                      bg-light text-dark
-                                    @endif
-                                    " name="order_status" onchange="document.getElementById('statusForm{{$order->id}}').submit();">
-                                      <option value="pending" {{$order->order_status == 'pending' ? 'selected' : ''}}>Pending</option>
-                                      <option value="received" {{$order->order_status == 'received' ? 'selected' : ''}}>Received</option>
-                                      <option value="preparing" {{$order->order_status == 'preparing' ? 'selected' : ''}}>Preparing</option>
-  
-                                      @if ($order->serving_method != 'on_table')
-                                      <option value="ready_to_pick_up" {{$order->order_status == 'ready_to_pick_up' ? 'selected' : ''}}>Ready to pick up</option>
-                                      <option value="picked_up" {{$order->order_status == 'picked_up' ? 'selected' : ''}}>Picked up</option>
-                                      @endif
-  
-                                      @if ($order->serving_method == 'home_delivery')
-                                      <option value="delivered" {{$order->order_status == 'delivered' ? 'selected' : ''}}>Delivered</option>
-                                      @endif
-  
-                                      @if ($order->serving_method == 'on_table')
-                                      <option value="ready_to_serve" {{$order->order_status == 'ready_to_serve' ? 'selected' : ''}}>Ready to Serve</option>
-                                      <option value="served" {{$order->order_status == 'served' ? 'selected' : ''}}>Served</option>
-                                      @endif
-  
-                                      <option value="cancelled" {{$order->order_status == 'cancelled' ? 'selected' : ''}}>Cancelled</option>
-                                    </select>
-                                  </form>
-                                </td>
-                                <td>
-                                  <form id="completeForm{{$order->id}}" class="d-inline-block" action="{{route('admin.product.order.completed')}}" method="post">
-                                      @csrf
-                                      <input type="hidden" name="order_id" value="{{$order->id}}">
-                                      <select class="form-control
-                                          @if (empty($order->completed) || $order->completed == 'no')
-                                              bg-danger
-                                          @elseif ($order->completed == 'yes')
-                                              bg-success
-                                          @endif
-                                      " name="completed" onchange="document.getElementById('completeForm{{$order->id}}').submit();">
-                                              <option value="no" {{empty($order->completed) || $order->completed == 'no' ? 'selected' : ''}}>No</option>
-                                              <option value="yes" {{$order->completed == 'yes' ? 'selected' : ''}}>Yes</option>
-                                      </select>
-                                    </form>
-                                </td>
-                                <td class="text-capitalize">
-                                    {{$order->method}}
-                                </td>
-                                <td>
-                                    {{$order->created_at}}
-                                </td>
-  
-                                <td>
-                                  <div class="dropdown">
-                                      <button class="btn btn-secondary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Actions
-                                      </button>
-                                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="{{route('admin.product.details',$order->id)}}">Details</a>
-  
-                                        <a href="#" class="dropdown-item editbtn" data-toggle="modal" data-target="#mailModal" data-email="{{$order->billing_email}}">Send Mail</a>
-  
-                                        @if ($order->type != 'pos')
-                                        <a class="dropdown-item" href="{{asset('assets/front/invoices/product/'.$order->invoice_number)}}">Invoice</a>
-                                        @endif
-  
-                                        <a class="dropdown-item" href="#">
-                                          <form class="deleteform d-inline-block" action="{{route('admin.product.order.delete')}}" method="post">
-                                              @csrf
-                                              <input type="hidden" name="order_id" value="{{$order->id}}">
-                                              <button type="submit" class="deletebtn">
-                                                Delete
-                                              </button>
-                                          </form>
-                                        </a>
-                                      </div>
-                                  </div>
-  
-                                </td>
-                              </tr>
-  
-                            @endforeach
-                          </tbody>
-                        </table>
-                        </div>
-                      </div>
-                  </div>
-                @endif
-              </div>
-            </div>
-          </div>
-          <div class="card-footer">
-            <div class="row">
-              <div class="d-inline-block mx-auto">
-                {{$orders->appends(['orders_from' => request()->input('orders_from'), 'serving_method' => request()->input('serving_method'), 'order_status' => request()->input('order_status'), 'payment_status' => request()->input('payment_status'), 'completed' => request()->input('completed'), 'order_date' => request()->input('order_date'), 'delivery_date' => request()->input('delivery_date'), 'search' => request()->input('search')])->links()}}
-              </div>
-            </div>
-          </div>
+
     </div>
 </div>
 

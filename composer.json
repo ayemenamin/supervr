@@ -36,6 +36,7 @@
         "simplesoftwareio/simple-qrcode": "~4.2.0",
         "spatie/laravel-cookie-consent": "^3.2.0",
         "spatie/laravel-sitemap": "^6.1.0",
+        "symfony/dotenv": "^6.4",
         "twilio/sdk": "^6.36"
     },
     "require-dev": {

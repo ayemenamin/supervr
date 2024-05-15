@@ -22,6 +22,8 @@ class Product extends Model
         'rating',
         'status',
         'is_feature',
+        'is_valible',
+        'is_special',
     ];
 
     public function category()

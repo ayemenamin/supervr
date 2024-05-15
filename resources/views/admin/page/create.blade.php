@@ -32,7 +32,7 @@
    <div class="col-md-12">
       <div class="card">
          <div class="card-header">
-            <div class="card-title">Create Page</div>
+            <div class="card-title">إنشاء صفحة جديدة</div>
          </div>
          <div class="card-body pt-5 pb-4">
             <div class="row">

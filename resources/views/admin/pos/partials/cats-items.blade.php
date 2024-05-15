@@ -24,16 +24,28 @@
                             <div class="row no-gutters">
                                 @foreach ($pcat->products as $product)
                                 <div class="col-lg-4 px-2 mb-3">
-                                    <a href="#" class="single-pos-item d-block cart-link" data-product="{{$product}}" data-href="{{route('admin.add.cart',$product->id)}}">
+                                    <a href="#" class="single-pos-item d-block cart-link 
+                                        @if($product->is_valible == 0) 
+                                          
+                                        @endif" 
+                                       data-href="{{route('admin.add.cart',$product->id)}}" 
+                                       @if($product->is_valible != 0) 
+                                           data-product="{{$product}}" 
+                                       @endif>
                                         <img class="lazy" src="{{asset('assets/admin/img/placeholde-150.png')}}" data-src="{{asset('assets/front/img/product/featured/' . $product->feature_image)}}" alt="" width="100%">
                                         <h6 class="text-white mt-2 text-center">{{$product->title}}</h6>
+                                        @if($product->is_valible == 0)
+                                            <span class="text-danger">Not Available</span>
+                                            
+                                        @endif
                                     </a>
                                 </div>
-                                @endforeach
+                            @endforeach
+                            
                             </div>
                             @endif
                         </div>
-                        @endforeach
+                        @endforeach~
                     </div>
                 </div>
             </div>

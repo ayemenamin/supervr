@@ -27,6 +27,10 @@ if (file_exists(__DIR__.'/../storage/framework/maintenance.php')) {
 
 require __DIR__.'/../vendor/autoload.php';
 
+use Symfony\Component\Dotenv\Dotenv;
+
+(new Dotenv())->loadEnv(__DIR__.'/../.env');
+
 /*
 |--------------------------------------------------------------------------
 | Turn On The Lights

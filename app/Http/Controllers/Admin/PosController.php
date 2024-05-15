@@ -79,7 +79,8 @@ class PosController extends Controller
             $data['orders'] = $query->where('admin_id', auth()->user()->id)->paginate(10);
             return view('admin.pos.index', $data);
         }
-
+        
+        //dd($data['pcats']);
         return view('admin.pos.index', $data);
     }
 
